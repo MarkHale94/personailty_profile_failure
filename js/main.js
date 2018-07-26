@@ -30,12 +30,16 @@ const newFix = function (cab){
     }
 }
 
-const comFix = function (abc){
-    for (i=0; i < localStorage.communication; i++){
+const comFix = function (){
+    brainexplode = JSON.parse(localStorage.communication)
+    for (i=0; i < (localStorage.length); i++){
     listFinder = document.querySelector("ul");
     simpleList = document.createElement("li");
     listFinder.appendChild(simpleList);
-    simpleList.innerHTML+= abc[i];
+    for (let j=0; j<brainexplode[i].length;j++){
+        
+        simpleList.innerHTML = brainexplode[i];
+    }
     }
 }
 
@@ -60,9 +64,9 @@ loadDatabase("similarpeople");
 newFix("similarPeople");
 textFix(localStorage.similarpeople);
 
-const comSib = "<ul><li>I would best communicate with my little sib by understanding how they learn knew information. Using that I can try to set them up to figure out the solution to their problem.</li>"
-const comInst = "<li>I would like my instructors to communicate with me by breaking down the materials step by step. Walking my brain through functions helps me understand how everything is connected and why these methods work.</li>"
-const comTeam = "<li>I would like my teammates to communication with me by showing me their code and how they tackled the problems they came across. I feel like it helps everyone if they get to explain they're code and help someone see another angle on a problem they might also be having.</li></ul>"
+const comSib = "I would best communicate with my little sib by understanding how they learn knew information. Using that I can try to set them up to figure out the solution to their problem."
+const comInst = "I would like my instructors to communicate with me by breaking down the materials step by step. Walking my brain through functions helps me understand how everything is connected and why these methods work."
+const comTeam = "I would like my teammates to communication with me by showing me their code and how they tackled the problems they came across. I feel like it helps everyone if they get to explain their code and help someone see another angle on a problem they might also be having."
 personalityData.communication.push(comSib);
 personalityData.communication.push(comInst);
 personalityData.communication.push(comTeam);
@@ -70,4 +74,4 @@ saveDatabase(personalityData.communication, "communication");
 loadDatabase("communication");
 const sayWhat = document.createElement("ul")
 comfinder.appendChild(sayWhat);
-comFix(localStorage.communication);
+comFix();
